@@ -26,21 +26,29 @@ class Separator {
         // }
         // console.timeEnd("one")
 
+
+        for (const preTable of result) {
+            const filtered = await Separator.filterTables(preTable)
+            await sleep(1)
+            TableCollection.all.push(...filtered)
+            // console.log(TableCollection.all.length)
+        }
+
         // TableCollection.all = []
 
-        console.time("parallel")
-        let count = 0
-        result = await result.parallelMap(window.jadualyAddress + "filter-tables.js", element => {
-            count += element.length
-            query("span#all-table-count").textContent = count
-            // console.log(count)
-        })
+        // console.time("parallel")
+        // let count = 0
+        // result = await result.parallelMap(window.jadualyAddress + "filter-tables.js", element => {
+        //     count += element.length
+        //     query("span#all-table-count").textContent = count
+        //     // console.log(count)
+        // })
         // console.log(count)
         
-        result.forEach(tables => {
-            TableCollection.all.push(...tables.map(options => new Table(options)))
-        })
-        console.timeEnd("parallel")
+        // result.forEach(tables => {
+        //     TableCollection.all.push(...tables.map(options => new Table(options)))
+        // })
+        // console.timeEnd("parallel")
 
         return TableCollection.all
     }
@@ -64,15 +72,15 @@ class Separator {
             .map(array => array.map(index => subjects[index]))
     }
     static filterTables(preTable) { [Subject] > Promise[Table]
-        return new Promise(resolve => {
-            const worker = new Worker("filter-tables-worker.js")
-            worker.onmessage = event => {
-                resolve(event.data.map(options => new Table(options)))
-            }
-            worker.postMessage(preTable)
-            // console.log(worker)
-            // return
-        })
+        // return new Promise(resolve => {
+        //     const worker = new Worker("filter-tables-worker.js")
+        //     worker.onmessage = event => {
+        //         resolve(event.data.map(options => new Table(options)))
+        //     }
+        //     worker.postMessage(preTable)
+        //     // console.log(worker)
+        //     // return
+        // })
         // await sleep(0) // to not freeze interface
         return preTable
             .map(subject => subject.options)
