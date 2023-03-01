@@ -5,7 +5,7 @@
     //     "All tests passed"
     // )
 
-    setTimeout(globalTest, 1)
+    // setTimeout(globalTest, 1)
 })();
 
 const subjectData = [
