@@ -37,6 +37,15 @@
     ]
 
 
+    
+    for (const scriptName of scripts) {
+        await new Promise(resolve => setTimeout(resolve, 10))
+        const tag = document.createElement("script")
+        tag.src = jadualyAddress + scriptName
+        document.head.appendChild(tag)
+    }
+
+
     const li = document.createElement("li")
     li.className = "nav-item dropdown"
     const a = document.createElement("a")
@@ -51,13 +60,6 @@
         `
 
         await new Promise(resolve => setTimeout(resolve, 1000))
-    
-        for (const scriptName of scripts) {
-            await new Promise(resolve => setTimeout(resolve, 10))
-            const tag = document.createElement("script")
-            tag.src = jadualyAddress + scriptName
-            document.head.appendChild(tag)
-        }
     
         for (const styleName of styles) {
             await new Promise(resolve => setTimeout(resolve, 10))
