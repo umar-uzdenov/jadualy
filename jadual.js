@@ -1,5 +1,5 @@
 (async function main() {
-    const address = "https://jadualy.pages.dev/"
+    window.jadualyAddress = "https://jadualy.pages.dev/"
     // const address = "http://127.0.0.1:5500/"
     const scripts = [
     //     "utils.js",
@@ -39,7 +39,7 @@
     for (const scriptName of scripts) {
         await new Promise(resolve => setTimeout(resolve, 10))
         const tag = document.createElement("script")
-        tag.src = address + scriptName
+        tag.src = jadualyAddress + scriptName
         document.body.appendChild(tag)
     }
 
@@ -47,7 +47,7 @@
         await new Promise(resolve => setTimeout(resolve, 10))
         const tag = document.createElement("link")
         tag.rel = "stylesheet"
-        tag.href = address + styleName
+        tag.href = jadualyAddress + styleName
         document.body.appendChild(tag)
     }
 
