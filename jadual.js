@@ -44,11 +44,13 @@
     a.textContent = "جدولي - مساعد الحذف والإضافة"
     a.addEventListener("click", async () => {
         document.head.innerHTML = `
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Jadual 4.0</title>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Jadual 4.0</title>
         `
+
+        await new Promise(resolve => setTimeout(resolve, 1000))
     
         for (const scriptName of scripts) {
             await new Promise(resolve => setTimeout(resolve, 10))
@@ -64,6 +66,7 @@
             tag.href = jadualyAddress + styleName
             document.head.appendChild(tag)
         }
+        await new Promise(resolve => setTimeout(resolve, 1000))
         runUi()
     })
     li.appendChild(a)
