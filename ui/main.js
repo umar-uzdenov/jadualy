@@ -37,7 +37,7 @@ async function runUi() {
             </div>
         </div>
     `)
-
+    setTimeout(globalTest, 1)
 }
 
 function showList() {
