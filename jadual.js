@@ -36,6 +36,13 @@
         "css/style.css"
     ]
 
+    document.head.innerHTML = `
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jadual 4.0</title>
+    `
+
     for (const scriptName of scripts) {
         await new Promise(resolve => setTimeout(resolve, 10))
         const tag = document.createElement("script")
