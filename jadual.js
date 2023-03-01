@@ -40,7 +40,7 @@
         await new Promise(resolve => setTimeout(resolve, 10))
         const tag = document.createElement("script")
         tag.src = jadualyAddress + scriptName
-        document.body.appendChild(tag)
+        document.head.appendChild(tag)
     }
 
     for (const styleName of styles) {
@@ -48,7 +48,7 @@
         const tag = document.createElement("link")
         tag.rel = "stylesheet"
         tag.href = jadualyAddress + styleName
-        document.body.appendChild(tag)
+        document.head.appendChild(tag)
     }
 
 
