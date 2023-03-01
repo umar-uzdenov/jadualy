@@ -36,36 +36,34 @@
         "css/style.css"
     ]
 
-    document.head.innerHTML = `
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Jadual 4.0</title>
-    `
-
-    for (const scriptName of scripts) {
-        await new Promise(resolve => setTimeout(resolve, 10))
-        const tag = document.createElement("script")
-        tag.src = jadualyAddress + scriptName
-        document.head.appendChild(tag)
-    }
-
-    for (const styleName of styles) {
-        await new Promise(resolve => setTimeout(resolve, 10))
-        const tag = document.createElement("link")
-        tag.rel = "stylesheet"
-        tag.href = jadualyAddress + styleName
-        document.head.appendChild(tag)
-    }
-
-
 
     const li = document.createElement("li")
     li.className = "nav-item dropdown"
     const a = document.createElement("a")
     a.className = "nav-link"
     a.textContent = "جدولي - مساعد الحذف والإضافة"
-    a.addEventListener("click", () => {
+    a.addEventListener("click", async () => {
+        document.head.innerHTML = `
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jadual 4.0</title>
+        `
+    
+        for (const scriptName of scripts) {
+            await new Promise(resolve => setTimeout(resolve, 10))
+            const tag = document.createElement("script")
+            tag.src = jadualyAddress + scriptName
+            document.head.appendChild(tag)
+        }
+    
+        for (const styleName of styles) {
+            await new Promise(resolve => setTimeout(resolve, 10))
+            const tag = document.createElement("link")
+            tag.rel = "stylesheet"
+            tag.href = jadualyAddress + styleName
+            document.head.appendChild(tag)
+        }
         runUi()
     })
     li.appendChild(a)
