@@ -28,4 +28,5 @@
     li.appendChild(a)
     const ul = document.querySelectorAll("#headerForm>ul")[0]
     ul.insertBefore(li, ul.firstChild)
+    alert(123)
 })();
