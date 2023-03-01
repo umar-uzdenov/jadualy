@@ -22,6 +22,7 @@
         "data/subject.js",
         "data/teacher.js",
         "data/table.js",
+        "test/utils.js",
         "table-collection.js",
 
         "separator.js",
