@@ -30,7 +30,7 @@ class Separator {
 
         console.time("parallel")
         let count = 0
-        result = await result.parallelMap("filter-tables.js", element => {
+        result = await result.parallelMap(window.jadualyAddress + "filter-tables.js", element => {
             count += element.length
             query("span#all-table-count").textContent = count
             // console.log(count)
