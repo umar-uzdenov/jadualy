@@ -1,0 +1,13 @@
+{
+    "name": "Jadual",
+    "version": "4.0",
+    "description": "Jadual helper for hazf ua idofa",
+    "manifest_version": 3,
+    "author": "Uzum",
+    "content_scripts": [
+        {
+            "matches": ["*://eduportal.iu.edu.sa/*"],
+            "js": ["jadual.js"]
+        }
+    ]
+}
