@@ -58,7 +58,7 @@ async function globalTest() {
         const subjectName = subj.name
 
         const options = []
-        const optionCount = random(3, 7)
+        const optionCount = random(2, 5)
         const lessonCount = lessonCounts.spliceRandom()
         for (let optionIndex = 0; optionIndex < optionCount; optionIndex++) {
             const optionCode = random(3, 15) * 100 + random(11, 99)
