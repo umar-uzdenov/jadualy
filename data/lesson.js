@@ -7,8 +7,11 @@ class Lesson {
     }
     equals(lesson) { Lesson > Boolean
         return this.code === lesson.code
-        return this.day.equals(lesson.day)
-            && this.begin.equals(lesson.begin)
-            && this.end.equals(lesson.end)
+        // return this.day.equals(lesson.day)
+        //     && this.begin.equals(lesson.begin)
+        //     && this.end.equals(lesson.end)
+    }
+    static fromString(string) {
+        return string // todo: implement
     }
 }

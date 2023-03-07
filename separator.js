@@ -12,6 +12,7 @@ class Separator {
     static async generateSubjectTables(subjects) { [Subject] > [Table]
         // return lol()
         Separator.subjects = subjects
+        TableCollection.subjects = subjects
         let result = []; [[Subject]]
         for (let length = 2; length <= subjects.length; length++) {
             result = result.concat(Separator.generateSubjectPermutations(length, subjects))
@@ -31,8 +32,11 @@ class Separator {
             const filtered = await Separator.filterTables(preTable)
             await sleep(1)
             TableCollection.all.push(...filtered)
+            query("span#all-table-count").textContent = TableCollection.all.length
             // console.log(TableCollection.all.length)
         }
+
+        TableCollection.prepare()
 
         // TableCollection.all = []
 

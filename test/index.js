@@ -37,20 +37,29 @@ const subjectData = [
         code: "نظم 3011",
         name: "المدخل إلى دراسة الأنظمة",
     },
+    {
+        code: "عقد 3014",
+        name: "التوحيد",
+    },
+    {
+        code: "فقه 3505",
+        name: "أخلاقيات المهنة",
+    },
 ]
 
 async function globalTest() {
     console.log("running global test")
-    const subjectCount = 7
+    const subjectCount = 9
     const subjects = []
+    const lessonCounts = [2, 3, 3, 3, 4, 5, 1, 1, 2, 2]
     for (let subjectIndex = 0; subjectIndex < subjectCount; subjectIndex++) {
         const subj = subjectData.spliceRandom()
         const subjectCode = subj.code
         const subjectName = subj.name
 
         const options = []
-        const optionCount = random(2, 5)
-        const lessonCount = random(1, 5)
+        const optionCount = random(3, 7)
+        const lessonCount = lessonCounts.spliceRandom()
         for (let optionIndex = 0; optionIndex < optionCount; optionIndex++) {
             const optionCode = random(3, 15) * 100 + random(11, 99)
             const teacher = Teacher.fromJson(mockTeachers.spliceRandom())
@@ -59,7 +68,7 @@ async function globalTest() {
             const days = [0, 1, 2, 3, 4]
             for (let lessonIndex = 0; lessonIndex < lessonCount; lessonIndex++) {
                 const lessonDay = days.spliceRandom()
-                const lessonHour = random(9, 15)
+                const lessonHour = random(8, 13)
                 const begin = new Time(lessonHour, 0)
                 const end = new Time(lessonHour, 50)
                 lessons.push(new Lesson(new Day(lessonDay), begin, end))
@@ -79,6 +88,7 @@ async function globalTest() {
     //     query("#body").innerHTML = TableCollection.all.length
     // }, 1);
     // await sleep(300)
+    showInitialSubjects(subjects)
     await Separator.generateSubjectTables(subjects)
     await TableCollection.filter()
     // clearInterval(interval)
