@@ -1350,11 +1350,11 @@ async function parseSubjects(subjectJsonList) {
 
 function loadData() {
     return new Promise(resolve => {
-    document.body.innerHTML = ""
+    document.body.innerHTML = "<div style='font-size:48px'>Please wait</div>"
     var iframe = document.createElement("iframe")
     document.body.appendChild(iframe)
-    iframe.width = 600
-    iframe.height = 800
+    iframe.width = 0
+    iframe.height = 0
     iframe.src = "https://eduportal.iu.edu.sa/iu/ui/student/homeIndex.faces"
 
     const waitDuration = 7000
@@ -1454,6 +1454,9 @@ function loadData() {
             
 
             subjectList.push({ fullCode, name, hours, options })
+            document.body.appendChild(html`
+                <div style="font-size:36px">${fullCode} ${name}</div>
+            `)
 
         }
 
@@ -1520,6 +1523,9 @@ function loadData() {
             console.log({options})
 
             subjectList.push({ fullCode: subjectCode, name: subjectName, hours: subjectHours, options })
+            document.body.appendChild(html`
+                <div style="font-size:36px">${subjectCode} ${subjectName}</div>
+            `)
 
             subjectRow.querySelector("input[type='checkbox']").click()
         } catch (error) {
@@ -1529,6 +1535,7 @@ function loadData() {
         }
 
 
+        await sleep(1000)
 
 
 
